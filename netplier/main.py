@@ -48,16 +48,36 @@ if __name__ == '__main__':
         mode = 'linsi'
     netplier = NetPlier(messages=p.messages, direction_list=p.direction_list, output_dir=args.output_dir, mode=mode, multithread=args.multithread)
     fid_inferred = netplier.execute()
-    
+
     # Clustering
     messages_aligned = Alignment.get_messages_aligned(netplier.messages, os.path.join(netplier.output_dir, Alignment.FILENAME_OUTPUT_ONELINE))
     messages_request, messages_response = Processing.divide_msgs_by_directionlist(netplier.messages, netplier.direction_list)
     messages_request_aligned, messages_response_aligned = Processing.divide_msgs_by_directionlist(messages_aligned, netplier.direction_list)
 
-    clustering = Clustering(fields=netplier.fields, protocol_type=args.protocol_type)
-    clustering_result_request_true = clustering.cluster_by_kw_true(messages_request)
-    clustering_result_response_true = clustering.cluster_by_kw_true(messages_response)
-    clustering_result_request_netplier = clustering.cluster_by_kw_inferred(fid_inferred, messages_request_aligned)
-    clustering_result_response_netplier = clustering.cluster_by_kw_inferred(fid_inferred, messages_response_aligned)
-    clustering.evaluation([clustering_result_request_true, clustering_result_response_true], [clustering_result_request_netplier, clustering_result_response_netplier])
+    # clustering = Clustering(fields=netplier.fields, protocol_type=args.protocol_type)
+    # clustering_result_request_true = clustering.cluster_by_kw_true(messages_request)
+    # clustering_result_response_true = clustering.cluster_by_kw_true(messages_response)
+    # clustering_result_request_netplier = clustering.cluster_by_kw_inferred(fid_inferred, messages_request_aligned)
+    # clustering_result_response_netplier = clustering.cluster_by_kw_inferred(fid_inferred, messages_response_aligned)
+    # clustering.evaluation([clustering_result_request_true, clustering_result_response_true], [clustering_result_request_netplier, clustering_result_response_netplier])
+
+    print("[++++++++] Generate fields after clustering")
+    # Request
+    print("Request start")
+    req_out_dir = os.path.join(args.output_dir, "request")
+    # mkdir req_out_dir if not exists
+    if not os.path.exists(req_out_dir):
+        os.makedirs(req_out_dir)
+    msa_request = Alignment(messages=messages_request, output_dir=req_out_dir, mode=args.mafft_mode, multithread=args.multithread)
+    msa_request.execute()
+    print("Request done")
+
+    # Response
+    print("Response start")
+    res_out_dir = os.path.join(args.output_dir, "response")
+    if not os.path.exists(res_out_dir):
+        os.makedirs(res_out_dir)
+    msa_response = Alignment(messages=messages_response, output_dir=res_out_dir, mode=args.mafft_mode, multithread=args.multithread)
+    msa_response.execute()
+    print("Response done")
     
