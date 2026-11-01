@@ -14,13 +14,8 @@ WORKDIR /work
 COPY . /work
 
 # Update and install necessary packages
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends\
     build-essential \
-    curl \
-    wget \
-    git \
-    vim \
-    virtualenv \
     mafft \
     schedtool \
     libpcap-dev
