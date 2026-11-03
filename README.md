@@ -11,6 +11,10 @@ $ pip install -r requirements.txt
 - Install `netzob`: [https://github.com/netzob/netzob.git](https://github.com/netzob/netzob.git)
 - Install `mafft`: [https://mafft.cbrc.jp/alignment/software/](https://mafft.cbrc.jp/alignment/software/)
 
+## Docker
+docker build -t netplier .
+docker run --rm -it -v "$PWD":/work netplier bash
+
 ## Usage
 
 Run NetPlier with the following command:
