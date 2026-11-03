@@ -12,8 +12,10 @@ $ pip install -r requirements.txt
 - Install `mafft`: [https://mafft.cbrc.jp/alignment/software/](https://mafft.cbrc.jp/alignment/software/)
 
 ## Docker
-```docker build -t netplier .```
-```docker run --rm -it -v "$PWD":/work netplier bash```
+```
+docker build -t netplier .
+docker run --rm -it -v "$PWD":/work netplier bash
+```
 
 ## Usage
 
