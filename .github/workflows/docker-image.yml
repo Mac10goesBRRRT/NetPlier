@@ -9,8 +9,13 @@ on:
 jobs:
 
   build:
-
+    name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+      attestations: write
+      id-token: write
 
     steps:
     - uses: actions/checkout@v4
