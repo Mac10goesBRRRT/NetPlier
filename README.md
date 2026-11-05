@@ -8,19 +8,19 @@ You should use the provided Docker Container, to avoid dependency issues:
 ```
 docker run --rm -it -v "$PWD":/work cuacuac/netplier:master bash
 ```
+or, if you dont want to mount your current directory into the container
 
+```
+docker run --rm -it cuacuac/netplier:master bash
+```
+
+### Non recommended way
 - Install dependencies (python 3.6 or higher):
 ```bash
 $ pip install -r requirements.txt
 ```
 - Install `netzob`: [https://github.com/netzob/netzob.git](https://github.com/netzob/netzob.git)
 - Install `mafft`: [https://mafft.cbrc.jp/alignment/software/](https://mafft.cbrc.jp/alignment/software/)
-
-## Docker
-```
-docker build -t netplier .
-docker run --rm -it -v "$PWD":/work netplier bash
-```
 
 ## Usage
 
@@ -42,3 +42,9 @@ for the network layer protocol (e.g., `icmp`), it should be `3`
 - `-m`, `--mafft`: the alignment mode of mafft, including `ginsi`(default), `linsi`, `einsi`  
 refer to [mafft](https://mafft.cbrc.jp/alignment/software/algorithms/algorithms.html) for detailed features of each mode
 - `-mt`, `--multithread`: using multithreading for alignment (default: `False`)
+
+## Docker
+```
+docker build -t netplier .
+docker run --rm -it -v "$PWD":/work netplier bash
+```
