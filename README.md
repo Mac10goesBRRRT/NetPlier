@@ -4,6 +4,11 @@ NetPlier is a tool for binary protocol reverse engineering. It takes network tra
 Engineering from Message Traces](https://www.cs.purdue.edu/homes/ye203/pub/NDSS21a.pdf).
 
 ## Installation
+You should use the provided Docker Container, to avoid dependency issues:
+```
+docker run --rm -it -v "$PWD":/work cuacuac/netplier:master bash
+```
+
 - Install dependencies (python 3.6 or higher):
 ```bash
 $ pip install -r requirements.txt
