@@ -4,9 +4,13 @@ NetPlier is a tool for binary protocol reverse engineering. It takes network tra
 Engineering from Message Traces](https://www.cs.purdue.edu/homes/ye203/pub/NDSS21a.pdf).
 
 ## Installation
-You should use the provided Docker Container, to avoid dependency issues:
+You should use the provided Docker Container, to avoid dependency issues (execute the command in the path of your cloned repository):
 ```
 docker run --rm -it -v "$PWD":/work cuacuac/netplier:master bash
+```
+in Windows Powershell:
+```
+docker run --rm -it -v "${PWD}:/work" cuacuac/netplier:master bash
 ```
 or, if you dont want to mount your current directory into the container
 
