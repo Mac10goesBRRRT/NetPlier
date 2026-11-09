@@ -6,11 +6,11 @@ Engineering from Message Traces](https://www.cs.purdue.edu/homes/ye203/pub/NDSS2
 ## Installation
 You should use the provided Docker Container, to avoid dependency issues (execute the command in the path of your cloned repository):
 ```
-docker run --rm -it -v "$PWD":/work cuacuac/netplier:master bash
+docker run --rm -it -v "$PWD"/input:/work/input -v "$PWD"/output:/work/tmp_results cuacuac/netplier:master bash
 ```
 in Windows Powershell:
 ```
-docker run --rm -it -v "${PWD}:/work" cuacuac/netplier:master bash
+docker run --rm -it -v "${PWD}"/input:/work/input -v "$PWD"/output:/work/tmp_results cuacuac/netplier:master bash
 ```
 or, if you dont want to mount your current directory into the container
 
